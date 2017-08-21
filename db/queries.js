@@ -14,8 +14,13 @@ function getSingle(showID) {
   return Shows().where('id', parseInt(showID)).first();
 }
 
+function add(show) {
+  return Shows().insert(show, 'id');
+}
+
 
 module.exports = {
   getAll: getAll,
-  getSingle: getSingle
+  getSingle: getSingle,
+  add: add
 };
