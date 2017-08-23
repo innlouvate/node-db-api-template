@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var queries = require('../db/queries');
 
+router.get('/', function(req, res, next) {
+  return "hello world!";
+});
+
 // *** GET all shows *** //
 router.get('/shows', function(req, res, next) {
   queries.getAll()
