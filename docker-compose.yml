@@ -3,11 +3,11 @@ services:
   db:
     container_name: db
     image: postgres
-  #   environment:
-  #       POSTGRES_PASSWORD: postgres
-  #       POSTGRES_USER: postgres
-  #   ports:
-  #     - 5432:5432
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+
   adminer:
       image: adminer
       ports:
@@ -16,7 +16,6 @@ services:
   web:
       container_name: web
       build: .
-      # image: node:8.4
       volumes:
         - $PWD:/app
       ports:
@@ -25,6 +24,3 @@ services:
         - PGHOST=db
         - PGDATABASE=postgres
         - PGUSER=postgres
-
-      # links:
-      #   - db
